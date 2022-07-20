@@ -234,7 +234,7 @@ void add_move_after_dahai(const std::vector<int>& haiyama, Moves& game_record, c
                 scores[pid] = game_state.player_state[pid].score + ten_move[pid];
             }
             tehai[hai]--;
-            game_record.push_back(make_hora(actor, target, hai, tehai, han, fu, uradora_marker, scores));
+            game_record.push_back(make_hora(actor, target, hai, tehai, han, fu, uradora_marker, scores, ten_move));
             ron_flag = true;
         }
     }
@@ -333,7 +333,7 @@ void add_move_after_tsumo(const std::vector<int>& haiyama, Moves& game_record, c
             scores[pid] = game_state.player_state[pid].score + ten_move[pid];
         }
         tehai[hai]--;
-        game_record.push_back(make_hora(actor, actor, hai, tehai, han, fu, uradora_marker, scores));
+        game_record.push_back(make_hora(actor, actor, hai, tehai, han, fu, uradora_marker, scores, ten_move));
     } else if (moves[0]["type"].string_value() == "ryukyoku" && moves[0]["reason"].string_value() == "kyushukyuhai") {
         const int actor = moves[0]["actor"].int_value();
         const Game_State game_state = get_game_state(game_record);
